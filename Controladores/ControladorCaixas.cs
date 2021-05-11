@@ -13,7 +13,7 @@ namespace Clube_Leitura.Controladores
 
         public int IndiceCaixa { get => ++indiceCaixa;}
 
-        public override void excluir(int indice)
+        /*public override void excluir(int indice)
         {
             int i = 0;
 
@@ -23,6 +23,6 @@ namespace Clube_Leitura.Controladores
                 i++;
             }
             base.excluir(indice);
-        }
+        */}
     }
 }
