@@ -1,0 +1,7 @@
+C:\Users\JX\Documents\GitHub\Clube_Leitura\Clube_Leitura\bin\Debug\Clube_Leitura.exe.config
+C:\Users\JX\Documents\GitHub\Clube_Leitura\Clube_Leitura\bin\Debug\Clube_Leitura.exe
+C:\Users\JX\Documents\GitHub\Clube_Leitura\Clube_Leitura\bin\Debug\Clube_Leitura.pdb
+C:\Users\JX\Documents\GitHub\Clube_Leitura\Clube_Leitura\obj\Debug\Clube_Leitura.csprojAssemblyReference.cache
+C:\Users\JX\Documents\GitHub\Clube_Leitura\Clube_Leitura\obj\Debug\Clube_Leitura.csproj.CoreCompileInputs.cache
+C:\Users\JX\Documents\GitHub\Clube_Leitura\Clube_Leitura\obj\Debug\Clube_Leitura.exe
+C:\Users\JX\Documents\GitHub\Clube_Leitura\Clube_Leitura\obj\Debug\Clube_Leitura.pdb

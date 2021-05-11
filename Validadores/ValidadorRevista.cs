@@ -1,0 +1,61 @@
+﻿using Clube_Leitura.Controladores;
+using Clube_Leitura.Domínio;
+using System;
+
+namespace Clube_Leitura.Validadores
+{
+    class ValidadorRevista : Validador
+    {
+        private Controlador controllerC;
+        private Controlador controllerE;
+        public ValidadorRevista(Controlador controller, Controlador controllerC, Controlador controllerE) : base(controller)
+        {
+            this.controllerC = controllerC;
+            this.controllerE = controllerE;
+        }
+        public override object objetoValido()
+        {
+            string colecao;
+            int nro_edicao, ano, iCaixa;
+            Caixa caixa;
+
+            while (true)
+            {
+                Console.WriteLine("Digite o nome da coleção");
+                colecao = Console.ReadLine(); //"Batman"; // 
+                if (colecao.Length > 0) { break; }
+            }
+            while (true)
+            {
+                Console.WriteLine("Digite o número da edição");
+                string nroStr = Console.ReadLine(); //"50"; // 
+                if (int.TryParse(nroStr, out nro_edicao)) { break; }
+            }
+            while (true)
+            {
+                Console.WriteLine("Digite o número de telefone do responsável");
+                string anoStr = Console.ReadLine(); //"2014"; //
+                if (int.TryParse(anoStr, out ano)) { break; }
+            }
+            while (true)
+            {
+                Console.WriteLine("Digite o número da caixa para armazenar");
+                Program.printArray(controllerC.Registros);
+                string caixaStr = Console.ReadLine(); //"1"; //
+                if (int.TryParse(caixaStr, out iCaixa) && iCaixa <= controllerC.Registros.Length && iCaixa > 0) { break; }
+            }
+            caixa = (Caixa)controllerC.Registros[iCaixa - 1];
+
+            return new Revista(colecao, nro_edicao, ano, caixa);
+        }
+
+        public bool revistaEmprestada(Revista r)
+        {
+            foreach (Emprestimo e in controllerE.Registros)
+            {
+                if (e.Revista == r) return true;
+            }
+            return false;
+        }
+    }
+}
