@@ -37,9 +37,9 @@ namespace Clube_Leitura.Telas
 
                 switch (opcao)
                 {
-                    case "1": tela = new TelaAmiguinhos(controladorA,controladorE); break;
-                    case "2": tela = new TelaCaixas(controladorC); break;
-                    case "3": tela = new TelaRevistas(controladorR, controladorC,controladorE); break;
+                    case "1": tela = new TelaAmiguinhos(controladorA, controladorE); break;
+                    case "2": tela = new TelaCaixas(controladorC, controladorR); break;
+                    case "3": tela = new TelaRevistas(controladorR, controladorC, controladorE); break;
                     case "4": tela = new TelaEmprestimos(controladorE, controladorA, controladorR); break;
 
                     default: tela = null; break;

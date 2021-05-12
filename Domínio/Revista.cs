@@ -15,6 +15,8 @@
             this.caixa = caixa;
         }
 
+        internal Caixa Caixa { get => caixa; }
+
         public override bool Equals(object obj)
         {
             return obj is Revista revista &&

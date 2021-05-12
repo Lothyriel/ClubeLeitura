@@ -6,12 +6,12 @@ namespace Clube_Leitura.Validadores
 {
     class ValidadorRevista : Validador
     {
-        private Controlador controllerC;
-        private Controlador controllerE;
-        public ValidadorRevista(Controlador controller, Controlador controllerC, Controlador controllerE) : base(controller)
+        private Controlador controladorC;
+        private Controlador controladorE;
+        public ValidadorRevista(Controlador controlador, Controlador controladorC, Controlador controladorE) : base(controlador)
         {
-            this.controllerC = controllerC;
-            this.controllerE = controllerE;
+            this.controladorC = controladorC;
+            this.controladorE = controladorE;
         }
         public override object objetoValido()
         {
@@ -40,18 +40,18 @@ namespace Clube_Leitura.Validadores
             while (true)
             {
                 Console.WriteLine("Digite o número da caixa para armazenar");
-                Program.printArray(controllerC.Registros);
+                Program.printArray(controladorC.Registros);
                 string caixaStr = Console.ReadLine(); //"1"; //
-                if (int.TryParse(caixaStr, out iCaixa) && iCaixa <= controllerC.Registros.Length && iCaixa > 0) { break; }
+                if (int.TryParse(caixaStr, out iCaixa) && iCaixa <= controladorC.Registros.Length && iCaixa > 0) { break; }
             }
-            caixa = (Caixa)controllerC.Registros[iCaixa - 1];
+            caixa = (Caixa)controladorC.Registros[iCaixa - 1];
 
             return new Revista(colecao, nro_edicao, ano, caixa);
         }
 
         public bool revistaEmprestada(Revista r)
         {
-            foreach (Emprestimo e in controllerE.Registros)
+            foreach (Emprestimo e in controladorE.Registros)
             {
                 if (e.Revista == r) return true;
             }

@@ -5,10 +5,12 @@ namespace Clube_Leitura.Telas
 {
     class TelaCaixas : Tela
     {
-        public TelaCaixas(ControladorCaixas controlador) : 
-        base(controlador, new ValidadorCaixa(controlador), "Tela Caixas")
-        {
+        private Controlador controladorR;
 
+        public TelaCaixas(ControladorCaixas controlador, Controlador controladorR) :
+        base(controlador, new ValidadorCaixa(controlador, controladorR), "Tela Caixas")
+        {
+            this.controladorR = controladorR;
         }
     }
 }

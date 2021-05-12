@@ -31,7 +31,7 @@ namespace Clube_Leitura.Validadores
             {
                 Console.WriteLine("Digite o número de telefone do responsável");
                 telefone = Console.ReadLine(); //"4999879114"; //
-                if (int.TryParse(telefone, out _)) { break; }
+                if (long.TryParse(telefone, out _)) { break; }
             }
             while (true)
             {
@@ -42,7 +42,6 @@ namespace Clube_Leitura.Validadores
 
             return new Amiguinho(nome, nome_responsavel, telefone, bairro);
         }
-
         public bool amiguinhoDevedor(Amiguinho a)
         {
             foreach (Emprestimo e in controladorE.Registros)

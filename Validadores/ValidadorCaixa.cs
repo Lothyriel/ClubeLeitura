@@ -7,10 +7,10 @@ namespace Clube_Leitura.Validadores
 {
     class ValidadorCaixa : Validador
     {
-        private new ControladorCaixas controlador;
-        public ValidadorCaixa(ControladorCaixas controlador) : base(controlador)
+        private Controlador controladorR;
+        public ValidadorCaixa(ControladorCaixas controlador,Controlador controladorR) : base(controlador)
         {
-            this.controlador = controlador;
+            this.controladorR = controladorR;
         }
 
         public override object objetoValido()
@@ -30,7 +30,16 @@ namespace Clube_Leitura.Validadores
                 if (etiqueta.Length > 0) { break; }
             }
 
-            return new Caixa(cor, etiqueta, controlador.IndiceCaixa);
+            return new Caixa(cor, etiqueta, ((ControladorCaixas)controlador).IndiceCaixa);
+        }
+
+        public bool caixaComLivro(Caixa c)
+        {
+            foreach (Revista r in controladorR.Registros)
+            {
+                if (r.Caixa == c) return true;
+            }
+            return false;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Clube_Leitura.Controladores;
+using Clube_Leitura.Domínio;
 using Clube_Leitura.Validadores;
 
 namespace Clube_Leitura.Telas
@@ -18,16 +19,15 @@ namespace Clube_Leitura.Telas
             if (controladorC.Registros.Length == 0) { Program.erro("Nenhuma caixa registrada!"); }
             else { base.cadastrar(indice); }
         }
-        /*public override void excluir()
+        public override void excluir()
         {
             int opcao = 0;
             bool indiceValido = getIndiceArray(ref opcao);
-            if (indiceValido && ((ValidadorRevista)validador).revistaEmprestada((Revista)controllerE.Registros[opcao - 1]))
+            if (indiceValido && ((ValidadorRevista)validador).revistaEmprestada((Revista)controller.Registros[opcao - 1]))
             {
                 Program.erro("Esta revista está emprestada");
             }
             else if (indiceValido) { controller.excluir(opcao); }
         }
-        */
     }
 }

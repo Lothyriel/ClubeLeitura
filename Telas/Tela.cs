@@ -17,7 +17,7 @@ namespace Clube_Leitura.Telas
             this.título = título;
         }
 
-        public void menu()
+        public virtual void menu()
         {
             Console.WriteLine(título + "\n");
             Console.WriteLine("1- para visualizar registros");
@@ -64,7 +64,7 @@ namespace Clube_Leitura.Telas
                 controller.cadastrar(indice, obj);
             }
         }
-        public void excluir()
+        public virtual void excluir()
         {
             int opcaoInt = 0;
             if (getIndiceArray(ref opcaoInt))
