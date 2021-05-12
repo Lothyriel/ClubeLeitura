@@ -15,6 +15,18 @@
             this.caixa = caixa;
         }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Revista revista &&
+                   colecao == revista.colecao &&
+                   nro_edicao == revista.nro_edicao;
+        }
+
+        public override int GetHashCode()
+        {
+            return nro_edicao.GetHashCode() ^ colecao.GetHashCode();
+        }
+
         public override string ToString()
         {
             return "[Coleção: " + colecao + "/ Edição Número: " + nro_edicao + "/ Ano: " + ano + "/ Número Caixa: " + caixa.Numero + " ]";

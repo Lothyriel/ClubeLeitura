@@ -64,7 +64,7 @@ namespace Clube_Leitura.Telas
                 controller.cadastrar(indice, obj);
             }
         }
-        public virtual void excluir()
+        public void excluir()
         {
             int opcaoInt = 0;
             if (getIndiceArray(ref opcaoInt))

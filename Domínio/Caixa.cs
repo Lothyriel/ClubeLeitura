@@ -13,6 +13,16 @@
             this.numero = numero;
         }
         public int Numero { get => numero;}
+
+        public override bool Equals(object obj)
+        {
+            return obj is Caixa caixa && numero == caixa.numero;
+        }
+
+        public override int GetHashCode()
+        {
+            return numero.GetHashCode() ^ etiqueta.GetHashCode();
+        }
         public override string ToString()
         {
             return "[Número: " + numero + "/ Etiqueta: " + etiqueta + "/ Cor: " + cor + " ]";

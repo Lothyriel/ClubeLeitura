@@ -15,7 +15,17 @@
             this.bairro = bairro;
         }
 
-        public string Nome { get => nome;}
+        public string Nome { get => nome; }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Amiguinho amiguinho && telefone == amiguinho.telefone;
+        }
+
+        public override int GetHashCode()
+        {
+            return telefone.GetHashCode() ^ nome.GetHashCode();
+        }
 
         public override string ToString()
         {

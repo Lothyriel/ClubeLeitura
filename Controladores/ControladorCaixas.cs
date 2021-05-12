@@ -4,25 +4,21 @@ namespace Clube_Leitura.Controladores
 {
     class ControladorCaixas : Controlador
     {
-        private int indiceCaixa;
-
-        public ControladorCaixas()
+        public int IndiceCaixa { get => corrigirIndice(); }
+        private int corrigirIndice()
         {
-            indiceCaixa = 0;
-        }
-
-        public int IndiceCaixa { get => ++indiceCaixa;}
-
-        /*public override void excluir(int indice)
-        {
-            int i = 0;
-
-            foreach (Caixa c in registros )
+            bool utilizado;
+            int id;
+            for (id = 0; id < Registros.Length; id++)
             {
-                if (i == c.Numero) { break; }
-                i++;
+                utilizado = false;
+                foreach (Caixa c in Registros)
+                {
+                    if (id + 1 == c.Numero) { utilizado = true; } //i -1 pois os valores do array começam em 0 e os da caixa em 1
+                }
+                if (!utilizado) { break; }
             }
-            base.excluir(indice);
-        */}
+            return id + 1;
+        }
     }
 }

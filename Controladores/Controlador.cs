@@ -22,7 +22,6 @@ namespace Clube_Leitura.Controladores
         {
             for (int i = indice; i < Registros.Length; i++)
             {
-                Program.printArray(Registros);
                 Object obj = registros[i];
                 registros[i - 1] = obj;
             }

@@ -20,6 +20,15 @@ namespace Clube_Leitura.Domínio
         internal Revista Revista { get => revista; }
         internal Amiguinho Amiguinho { get => amiguinho; }
 
+        public override bool Equals(object obj)
+        {
+            return obj is Emprestimo emprestimo && amiguinho == emprestimo.amiguinho;
+        }
+
+        public override int GetHashCode()
+        {
+            return amiguinho.GetHashCode() ^ revista.GetHashCode();
+        }
         public override string ToString()
         {
             return "Amiguinho: " + amiguinho.Nome + "\n/ Revista: " + revista + "\n/ Data de Empréstimo: " + dataEmprestimo + "\n/ Data de Devolução: " + dataDevolucao + " ]";
