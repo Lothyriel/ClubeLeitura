@@ -2,7 +2,6 @@
 using Clube_Leitura.Domínio;
 using Clube_Leitura.Validadores;
 using System;
-using System.Linq;
 
 namespace Clube_Leitura.Telas
 {
