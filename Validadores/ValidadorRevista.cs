@@ -33,7 +33,7 @@ namespace Clube_Leitura.Validadores
             }
             while (true)
             {
-                Console.WriteLine("Digite o número de telefone do responsável");
+                Console.WriteLine("Digite o ano da edição");
                 string anoStr = Console.ReadLine(); //"2014"; //
                 if (int.TryParse(anoStr, out ano)) { break; }
             }

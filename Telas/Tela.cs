@@ -6,13 +6,13 @@ namespace Clube_Leitura.Telas
 {
     abstract class Tela
     {
-        protected Controlador controller;
+        protected Controlador controlador;
         protected Validador validador;
         protected String título;
 
         public Tela(Controlador controller, Validador validador, String título)
         {
-            this.controller = controller;
+            this.controlador = controller;
             this.validador = validador;
             this.título = título;
         }
@@ -30,7 +30,7 @@ namespace Clube_Leitura.Telas
 
             switch (opcao)
             {
-                case "1": Program.printArray(controller.Registros); break;
+                case "1": Program.printArray(controlador.Registros); break;
                 case "2": cadastrar(-1); break;
                 case "3": edit(); break;
                 case "4": excluir(); break;
@@ -39,16 +39,16 @@ namespace Clube_Leitura.Telas
                 default: Program.erro("Comando incorreto!"); break;
             }
         }
-        protected bool getIndiceArray(ref int opcaoInt)
+        protected bool getIndiceArray(Object[] array, ref int opcaoInt)
         {
             while (true)
             {
                 Console.WriteLine("Digite o indice para editar ou digite 0 para cancelar");
-                if (!Program.printArray(controller.Registros)) { return false; }
+                if (!Program.printArray(array)) { return false; }
                 string opcao = Console.ReadLine();
                 if (opcao == "0") { return false; }
 
-                if (!int.TryParse(opcao, out opcaoInt) || opcaoInt < 0 || opcaoInt > controller.Registros.Length) { continue; }
+                if (!int.TryParse(opcao, out opcaoInt) || opcaoInt < 0 || opcaoInt > controlador.Registros.Length) { continue; }
 
                 return true;
             }
@@ -61,21 +61,21 @@ namespace Clube_Leitura.Telas
 
             else
             {
-                controller.cadastrar(indice, obj);
+                controlador.cadastrar(indice, obj);
             }
         }
         public virtual void excluir()
         {
             int opcaoInt = 0;
-            if (getIndiceArray(ref opcaoInt))
+            if (getIndiceArray(controlador.Registros, ref opcaoInt))
             {
-                controller.excluir(opcaoInt);
+                controlador.excluir(opcaoInt);
             }
         }
         public void edit()
         {
             int opcaoInt = 0;
-            if (getIndiceArray(ref opcaoInt))
+            if (getIndiceArray(controlador.Registros, ref opcaoInt))
             {
                 cadastrar(opcaoInt);
             }

@@ -17,6 +17,7 @@ namespace Clube_Leitura.Domínio
             this.dataDevolucao = dataDevolucao;
         }
 
+        public DateTime DataEmprestimo { get => dataEmprestimo; }
         internal Revista Revista { get => revista; }
         internal Amiguinho Amiguinho { get => amiguinho; }
 
@@ -31,7 +32,7 @@ namespace Clube_Leitura.Domínio
         }
         public override string ToString()
         {
-            return "Amiguinho: " + amiguinho.Nome + "\n/ Revista: " + revista + "\n/ Data de Empréstimo: " + dataEmprestimo + "\n/ Data de Devolução: " + dataDevolucao + " ]";
+            return "Amiguinho: " + amiguinho.Nome + "\n/ Revista: " + revista + "\n/ Data de Empréstimo: " + dataEmprestimo.ToString("dd/MM/yyyy") + "\n/ Data de Devolução: " + dataDevolucao.ToString("dd/MM/yyyy") + " ]";
         }
     }
 }

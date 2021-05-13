@@ -8,7 +8,7 @@ namespace Clube_Leitura.Controladores
 
         public virtual Object[] Registros { get => registros; }
 
-        public virtual void cadastrar(int indice, Object obj)
+        public void cadastrar(int indice, Object obj)
         {
             if (indice == -1)
             {

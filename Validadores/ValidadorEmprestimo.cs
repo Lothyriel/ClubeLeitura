@@ -6,12 +6,12 @@ namespace Clube_Leitura.Validadores
 {
     class ValidadorEmprestimo : Validador
     {
-        private Controlador controllerA;
-        private Controlador controllerR;
-        public ValidadorEmprestimo(Controlador controller, Controlador controllerA, Controlador controllerR) : base(controller)
+        private Controlador controladorA;
+        private Controlador controladorR;
+        public ValidadorEmprestimo(Controlador controlador, Controlador controladorA, Controlador controladorR) : base(controlador)
         {
-            this.controllerA = controllerA;
-            this.controllerR = controllerR;
+            this.controladorA = controladorA;
+            this.controladorR = controladorR;
         }
 
         public override Object objetoValido()
@@ -25,19 +25,19 @@ namespace Clube_Leitura.Validadores
             while (true)
             {
                 Console.WriteLine("Digite o número do amiguinho");
-                Program.printArray(controllerA.Registros);
+                Program.printArray(amiguinhosSemEmprestimo());
                 string amiguinhoStr = Console.ReadLine(); //"1"; //
-                if (int.TryParse(amiguinhoStr, out iAmiguinho) && iAmiguinho <= controllerA.Registros.Length && iAmiguinho > 0) { break; }
+                if (int.TryParse(amiguinhoStr, out iAmiguinho) && iAmiguinho <= amiguinhosSemEmprestimo().Length && iAmiguinho > 0) { break; }
             }
-            amiguinho = (Amiguinho)controllerA.Registros[iAmiguinho - 1];
+            amiguinho = amiguinhosSemEmprestimo()[iAmiguinho - 1];
             while (true)
             {
                 Console.WriteLine("Digite o número da revista desejada");
-                Program.printArray(controllerR.Registros);
+                Program.printArray(revistasDisponiveis()); ;
                 string revistaStr = Console.ReadLine(); //"1"; //
-                if (int.TryParse(revistaStr, out iRevista) && iRevista <= controllerR.Registros.Length && iRevista > 0) { break; }
+                if (int.TryParse(revistaStr, out iRevista) && iRevista <= controladorR.Registros.Length && iRevista > 0) { break; }
             }
-            revista = (Revista)controllerR.Registros[iRevista - 1];
+            revista = (Revista)controladorR.Registros[iRevista - 1];
             while (true)
             {
                 Console.WriteLine("Digite a data de empréstimo");
@@ -52,6 +52,36 @@ namespace Clube_Leitura.Validadores
             }
 
             return new Emprestimo(amiguinho, revista, dataEmprestimo, dataDevolucao);
+        }
+
+        public Amiguinho[] amiguinhosSemEmprestimo()
+        {
+            Amiguinho[] amiguinhos = new Amiguinho[0];
+            foreach (Amiguinho a in controladorA.Registros)
+            {
+                bool esta = false;
+                foreach (Emprestimo e in controlador.Registros)
+                {
+                    if (e.Amiguinho == a) { esta = true; }
+                }
+                if (!esta) { Array.Resize(ref amiguinhos, amiguinhos.Length + 1); amiguinhos[amiguinhos.Length - 1] = a; }
+            }
+            return amiguinhos;
+        }
+
+        public Revista[] revistasDisponiveis()
+        {
+            Revista[] revistas = new Revista[0];
+            foreach (Revista r in controladorR.Registros)
+            {
+                bool esta = false;
+                foreach (Emprestimo e in controlador.Registros)
+                {
+                    if (e.Revista == r) { esta = true; }
+                }
+                if (!esta) { Array.Resize(ref revistas, revistas.Length + 1); revistas[revistas.Length - 1] = r; }
+            }
+            return revistas;
         }
     }
 }
