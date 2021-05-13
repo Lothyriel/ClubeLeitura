@@ -47,7 +47,7 @@ namespace Clube_Leitura.Telas
             switch (opcao)
             {
                 case "1": visualizarMes(DateTime.Today); break;
-                case "2": selecionarData(); break;
+                case "2": visualizarMes(selecionarData()); break;
                 case "3": cadastrar(-1); break;
                 case "4": excluir(); break;
                 //case "5": edit(); break;
@@ -56,7 +56,7 @@ namespace Clube_Leitura.Telas
                 default: Program.erro("Comando incorreto!"); break;
             }
         }
-        private void selecionarData()
+        private DateTime selecionarData()
         {
             DateTime dataConsulta;
             while (true)
@@ -65,7 +65,7 @@ namespace Clube_Leitura.Telas
                 string dataConsultaStr = Console.ReadLine(); //"27/04/2011"; //
                 if (DateTime.TryParse(dataConsultaStr, out dataConsulta) && dataConsulta.CompareTo(DateTime.Now) < 0) { break; };
             }
-            visualizarMes(dataConsulta);
+            return dataConsulta;
         }
         private void visualizarMes(DateTime data)
         {
