@@ -7,11 +7,9 @@ namespace Clube_Leitura.Telas
     class TelaRevistas : Tela
     {
         private Controlador controladorC;
-        private Controlador controladorE;
         public TelaRevistas(Controlador controlador, Controlador controladorC, Controlador controladorE) :
         base(controlador, new ValidadorRevista(controlador, controladorC, controladorE), "Tela Caixas")
         {
-            this.controladorE = controladorE;
             this.controladorC = controladorC;
         }
         public override void cadastrar(int indice)
