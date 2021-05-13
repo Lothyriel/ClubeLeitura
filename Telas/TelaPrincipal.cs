@@ -24,6 +24,7 @@ namespace Clube_Leitura.Telas
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("Clube da Leitura");
                 Console.WriteLine("\nDigite: ");
                 Console.WriteLine("1- para visualizar o menu de Amiguinhos");
                 Console.WriteLine("2- para visualizar o menu de Caixas");
