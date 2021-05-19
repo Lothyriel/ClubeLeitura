@@ -14,7 +14,7 @@ namespace Clube_Leitura.Telas
         }
         public override void cadastrar(int indice)
         {
-            if (controladorC.Registros.Length == 0) { Program.erro("Nenhuma caixa registrada!"); }
+            if (controladorC.Registros.Count == 0) { Program.erro("Nenhuma caixa registrada!"); }
             else { base.cadastrar(indice); }
         }
         public override void excluir()

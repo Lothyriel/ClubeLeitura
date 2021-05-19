@@ -1,6 +1,7 @@
 ﻿using Clube_Leitura.Controladores;
 using Clube_Leitura.Validadores;
 using System;
+using System.Collections.Generic;
 
 namespace Clube_Leitura.Telas
 {
@@ -30,7 +31,7 @@ namespace Clube_Leitura.Telas
 
             switch (opcao)
             {
-                case "1": Program.printArray(controlador.Registros); break;
+                case "1": Program.printList(controlador.Registros); break;
                 case "2": cadastrar(-1); break;
                 case "3": edit(); break;
                 case "4": excluir(); break;
@@ -39,16 +40,16 @@ namespace Clube_Leitura.Telas
                 default: Program.erro("Comando incorreto!"); break;
             }
         }
-        protected bool getIndiceArray(Object[] array, ref int opcaoInt)
+        protected bool getIndiceArray(List<Object> lista, ref int opcaoInt)
         {
             while (true)
             {
                 Console.WriteLine("Digite o indice para editar ou digite 0 para cancelar");
-                if (!Program.printArray(array)) { return false; }
+                if (!Program.printList(lista)) { return false; }
                 string opcao = Console.ReadLine();
                 if (opcao == "0") { return false; }
 
-                if (!int.TryParse(opcao, out opcaoInt) || opcaoInt < 0 || opcaoInt > controlador.Registros.Length) { continue; }
+                if (!int.TryParse(opcao, out opcaoInt) || opcaoInt < 0 || opcaoInt > controlador.Registros.Count) { continue; }
 
                 return true;
             }

@@ -2,6 +2,7 @@
 using Clube_Leitura.Domínio;
 using Clube_Leitura.Validadores;
 using System;
+using System.Collections.Generic;
 
 namespace Clube_Leitura.Telas
 {
@@ -19,8 +20,8 @@ namespace Clube_Leitura.Telas
 
         public override void cadastrar(int indice)
         {
-            if (((ValidadorEmprestimo)validador).amiguinhosSemEmprestimo().Length == 0) { Program.erro("Nenhum amiguinho disponível!"); }
-            else if (((ValidadorEmprestimo)validador).revistasDisponiveis().Length == 0) { Program.erro("Nenhuma revista disponível!"); }
+            if (((ValidadorEmprestimo)validador).amiguinhosSemEmprestimo().Count == 0) { Program.erro("Nenhum amiguinho disponível!"); }
+            else if (((ValidadorEmprestimo)validador).revistasDisponiveis().Count == 0) { Program.erro("Nenhuma revista disponível!"); }
             else { base.cadastrar(indice); }
         }
         public override void excluir()
@@ -69,15 +70,15 @@ namespace Clube_Leitura.Telas
         }
         private void visualizarMes(DateTime data)
         {
-            Emprestimo[] emprestimos = new Emprestimo[0];
+            List<Object> emprestimos = new List<Object>();
             foreach (Emprestimo e in controlador.Registros)
             {
                 if (e.DataEmprestimo.Year == data.Year && e.DataEmprestimo.Month == data.Month)
                 {
-                    Array.Resize(ref emprestimos, emprestimos.Length + 1); emprestimos[emprestimos.Length - 1] = e;
+                    emprestimos.Add(e);
                 }
             }
-            Program.printArray(emprestimos);
+            Program.printList(emprestimos);
         }
     }
 }

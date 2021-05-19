@@ -40,9 +40,9 @@ namespace Clube_Leitura.Validadores
             while (true)
             {
                 Console.WriteLine("Digite o número da caixa para armazenar");
-                Program.printArray(controladorC.Registros);
+                Program.printList(controladorC.Registros);
                 string caixaStr = Console.ReadLine(); //"1"; //
-                if (int.TryParse(caixaStr, out iCaixa) && iCaixa <= controladorC.Registros.Length && iCaixa > 0) { break; }
+                if (int.TryParse(caixaStr, out iCaixa) && iCaixa <= controladorC.Registros.Count && iCaixa > 0) { break; }
             }
             caixa = (Caixa)controladorC.Registros[iCaixa - 1];
 

@@ -1,4 +1,7 @@
 ﻿using Clube_Leitura.Domínio;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace Clube_Leitura.Controladores
 {
@@ -9,7 +12,7 @@ namespace Clube_Leitura.Controladores
         {
             bool utilizado;
             int id;
-            for (id = 0; id < Registros.Length; id++)
+            for (id = 0; id < Registros.Count; id++)
             {
                 utilizado = false;
                 foreach (Caixa c in Registros)

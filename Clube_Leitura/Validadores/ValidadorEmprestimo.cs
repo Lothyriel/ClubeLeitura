@@ -1,6 +1,7 @@
 ﻿using Clube_Leitura.Controladores;
 using Clube_Leitura.Domínio;
 using System;
+using System.Collections.Generic;
 
 namespace Clube_Leitura.Validadores
 {
@@ -25,19 +26,19 @@ namespace Clube_Leitura.Validadores
             while (true)
             {
                 Console.WriteLine("Digite o número do amiguinho");
-                Program.printArray(amiguinhosSemEmprestimo());
+                Program.printList(amiguinhosSemEmprestimo());
                 string amiguinhoStr = Console.ReadLine(); //"1"; //
-                if (int.TryParse(amiguinhoStr, out iAmiguinho) && iAmiguinho <= amiguinhosSemEmprestimo().Length && iAmiguinho > 0) { break; }
+                if (int.TryParse(amiguinhoStr, out iAmiguinho) && iAmiguinho <= amiguinhosSemEmprestimo().Count && iAmiguinho > 0) { break; }
             }
             amiguinho = amiguinhosSemEmprestimo()[iAmiguinho - 1];
             while (true)
             {
                 Console.WriteLine("Digite o número da revista desejada");
-                Program.printArray(revistasDisponiveis()); ;
+                Program.printList(revistasDisponiveis()); ;
                 string revistaStr = Console.ReadLine(); //"1"; //
-                if (int.TryParse(revistaStr, out iRevista) && iRevista <= controladorR.Registros.Length && iRevista > 0) { break; }
+                if (int.TryParse(revistaStr, out iRevista) && iRevista <= controladorR.Registros.Count && iRevista > 0) { break; }
             }
-            revista = (Revista)controladorR.Registros[iRevista - 1];
+            revista = revistasDisponiveis()[iRevista - 1];
             while (true)
             {
                 Console.WriteLine("Digite a data de empréstimo");
@@ -54,9 +55,9 @@ namespace Clube_Leitura.Validadores
             return new Emprestimo(amiguinho, revista, dataEmprestimo, dataDevolucao);
         }
 
-        public Amiguinho[] amiguinhosSemEmprestimo()
+        public List<Amiguinho> amiguinhosSemEmprestimo()
         {
-            Amiguinho[] amiguinhos = new Amiguinho[0];
+            List<Amiguinho> amiguinhos = new List<Amiguinho>();
             foreach (Amiguinho a in controladorA.Registros)
             {
                 bool esta = false;
@@ -64,14 +65,14 @@ namespace Clube_Leitura.Validadores
                 {
                     if (e.Amiguinho == a) { esta = true; }
                 }
-                if (!esta) { Array.Resize(ref amiguinhos, amiguinhos.Length + 1); amiguinhos[amiguinhos.Length - 1] = a; }
+                if (!esta) { amiguinhos.Add(a); }
             }
             return amiguinhos;
         }
 
-        public Revista[] revistasDisponiveis()
+        public List<Revista> revistasDisponiveis()
         {
-            Revista[] revistas = new Revista[0];
+            List<Revista> revistas = new List<Revista>();
             foreach (Revista r in controladorR.Registros)
             {
                 bool esta = false;
@@ -79,7 +80,7 @@ namespace Clube_Leitura.Validadores
                 {
                     if (e.Revista == r) { esta = true; }
                 }
-                if (!esta) { Array.Resize(ref revistas, revistas.Length + 1); revistas[revistas.Length - 1] = r; }
+                if (!esta) { revistas.Add(r); }
             }
             return revistas;
         }
