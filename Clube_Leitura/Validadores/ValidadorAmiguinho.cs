@@ -14,7 +14,7 @@ namespace Clube_Leitura.Validadores
         public override Object objetoValido()
         {
             string nome, nome_responsavel, telefone, bairro;
-
+   
             while (true)
             {
                 Console.WriteLine("Digite o nome do amiguinho");

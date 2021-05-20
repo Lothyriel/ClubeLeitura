@@ -13,7 +13,7 @@ namespace Clube_Leitura.Telas
         public override void excluir()
         {
             int opcao = 0;
-            bool indiceValido = getIndiceArray(controlador.Registros, ref opcao);
+            bool indiceValido = getIndiceLista(controlador.Registros, ref opcao);
             if (indiceValido && ((ValidadorCaixa)validador).caixaComLivro((Caixa)controlador.Registros[opcao - 1]))
             {
                 Program.erro("Esta caixa contém livros!");

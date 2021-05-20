@@ -27,7 +27,7 @@ namespace Clube_Leitura.Telas
         public override void excluir()
         {
             int opcao = 0;
-            bool indiceValido = getIndiceArray(controlador.Registros, ref opcao);
+            bool indiceValido = getIndiceLista(controlador.Registros, ref opcao);
             if (indiceValido && !validadorA.amiguinhoDevedor((Amiguinho)controladorA.Registros[opcao - 1]))
             {
                 Program.erro("Este amiguinho não tem um empréstimo atual");

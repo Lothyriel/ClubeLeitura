@@ -13,7 +13,7 @@ namespace Clube_Leitura.Telas
 
         public Tela(Controlador controller, Validador validador, String título)
         {
-            this.controlador = controller;
+            controlador = controller;
             this.validador = validador;
             this.título = título;
         }
@@ -40,7 +40,7 @@ namespace Clube_Leitura.Telas
                 default: Program.erro("Comando incorreto!"); break;
             }
         }
-        protected bool getIndiceArray(List<Object> lista, ref int opcaoInt)
+        protected bool getIndiceLista(List<Object> lista, ref int opcaoInt)
         {
             while (true)
             {
@@ -68,7 +68,7 @@ namespace Clube_Leitura.Telas
         public virtual void excluir()
         {
             int opcaoInt = 0;
-            if (getIndiceArray(controlador.Registros, ref opcaoInt))
+            if (getIndiceLista(controlador.Registros, ref opcaoInt))
             {
                 controlador.excluir(opcaoInt);
             }
@@ -76,7 +76,7 @@ namespace Clube_Leitura.Telas
         public void edit()
         {
             int opcaoInt = 0;
-            if (getIndiceArray(controlador.Registros, ref opcaoInt))
+            if (getIndiceLista(controlador.Registros, ref opcaoInt))
             {
                 cadastrar(opcaoInt);
             }
